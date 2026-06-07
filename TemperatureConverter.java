@@ -43,7 +43,7 @@ public class TemperatureConverter {
      * Required Method Signature from instructions.
      */
     public static double convertTemperature(double temperature, String unit) {
-        if (unit.equalsIgnoreCase("C")) {
+        if (unit != null && unit.equalsIgnoreCase("C")) {
             return (temperature * 9.0 / 5.0) + 32.0;
         } else {
             return (temperature - 32.0) * 5.0 / 9.0;
@@ -51,7 +51,7 @@ public class TemperatureConverter {
     }
 
     /**
-     * Overloaded method to explicitly catch int types from the autograder test file.
+     * Overloaded method to explicitly catch primitive int values compiled by the test framework.
      */
     public static double convertTemperature(int temperature, String unit) {
         return convertTemperature((double) temperature, unit);
@@ -87,3 +87,4 @@ public class TemperatureConverter {
         return true;
     }
 }
+
