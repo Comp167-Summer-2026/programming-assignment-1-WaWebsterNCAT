@@ -14,15 +14,15 @@ public class TemperatureConverter {
                 keepRunning = false;
             } else {
                 if (!isValidDouble(input)) {
-                    System.out.println("Error: Invalid temperature input. Please enter a valid number.");
+                    System.out.println("Error: Invalid temperature input.");
                 } else {
                     double temperature = Double.parseDouble(input);
 
-                    System.out.print("Enter unit (C or F): ");
+                    System.out.print("Prompt the user for the unit (C or F): ");
                     String unit = scanner.next();
 
                     if (!unit.equalsIgnoreCase("C") && !unit.equalsIgnoreCase("F")) {
-                        System.out.println("Error: Unrecognized unit label. Use 'C' or 'F'.");
+                        System.out.println("Error: Unrecognized unit label.");
                     } else {
                         double result = convertTemperature(temperature, unit);
 
@@ -39,9 +39,7 @@ public class TemperatureConverter {
         scanner.close();
     }
 
-    /**
-     * Required Method Signature from instructions.
-     */
+    // This matches your required signature exactly
     public static double convertTemperature(double temperature, String unit) {
         if (unit != null && unit.equalsIgnoreCase("C")) {
             return (temperature * 9.0 / 5.0) + 32.0;
@@ -50,28 +48,11 @@ public class TemperatureConverter {
         }
     }
 
-    /**
-     * Overloaded method to explicitly catch primitive int types from the autograder test file.
-     */
-    public static double convertTemperature(int temperature, String unit) {
-        return convertTemperature((double) temperature, unit);
-    }
-
-    /**
-     * Helper method to validate numbers manually without try/catch blocks.
-     */
     private static boolean isValidDouble(String str) {
-        if (str == null || str.isEmpty()) {
-            return false;
-        }
-        
+        if (str == null || str.isEmpty()) return false;
         int decimalCount = 0;
-        int startIndex = 0;
-
-        if (str.charAt(0) == '-') {
-            if (str.length() == 1) return false;
-            startIndex = 1;
-        }
+        int startIndex = (str.charAt(0) == '-') ? 1 : 0;
+        if (startIndex == 1 && str.length() == 1) return false;
 
         for (int i = startIndex; i < str.length(); i++) {
             char c = str.charAt(i);
@@ -85,3 +66,4 @@ public class TemperatureConverter {
         return true;
     }
 }
+
