@@ -5,11 +5,11 @@ public class TemperatureConverter {
     /* hint
 
     public static double convertTemperature(double temperature, String unit) {
-        // TODO: students implement this
+         // TODO: students implement this
         return 0.0;
     }
 
-     */
+      */
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -29,7 +29,7 @@ public class TemperatureConverter {
                 } else {
                     double temperature = Double.parseDouble(input);
 
-                    System.out.print("Prompt the user for the unit (C or F): ");
+                    System.out.print("Enter unit (C or F): ");
                     String unit = scanner.next();
 
                     // Validate if the unit is valid
