@@ -18,7 +18,7 @@ public class TemperatureConverter {
                 } else {
                     double temperature = Double.parseDouble(input);
 
-                    System.out.print("Prompt the user for the unit (C or F): ");
+                    System.out.print("Enter unit (C or F): ");
                     String unit = scanner.next();
 
                     if (!unit.equalsIgnoreCase("C") && !unit.equalsIgnoreCase("F")) {
@@ -85,4 +85,3 @@ public class TemperatureConverter {
         return true;
     }
 }
-
