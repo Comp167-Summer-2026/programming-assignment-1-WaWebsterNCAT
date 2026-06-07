@@ -1,12 +1,11 @@
 public class TemperatureConverter {
 
-    // Converts Celsius to Fahrenheit
-    public static double celsiusToFahrenheit(double celsius) {
-        return (celsius * 9 / 5) + 32;
-    }
+    public static double convertTemperature(double temperature, String unit) {
 
-    // Converts Fahrenheit to Celsius
-    public static double fahrenheitToCelsius(double fahrenheit) {
-        return (fahrenheit - 32) * 5 / 9;
+        if (unit.equalsIgnoreCase("C")) {
+            return (temperature * 9 / 5) + 32; // C to F
+        } else {
+            return (temperature - 32) * 5 / 9; // F to C
+        }
     }
 }
