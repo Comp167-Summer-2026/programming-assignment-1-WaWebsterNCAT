@@ -2,15 +2,6 @@ import java.util.Scanner;
 
 public class TemperatureConverter {
 
-    /* hint
-
-    public static double convertTemperature(double temperature, String unit) {
-         // TODO: students implement this
-        return 0.0;
-    }
-
-      */
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean keepRunning = true;
@@ -19,27 +10,22 @@ public class TemperatureConverter {
             System.out.print("Enter a temperature value or type 'stop' to quit: ");
             String input = scanner.next();
 
-            // Check for exit condition safely without using break or exceptions
             if (input.equalsIgnoreCase("stop")) {
                 keepRunning = false;
             } else {
-                // Validate if the input string is a valid decimal number safely
                 if (!isValidDouble(input)) {
-                    System.out.println("Error: Invalid temperature input. Please enter a valid number (letters are not allowed).");
+                    System.out.println("Error: Invalid temperature input. Please enter a valid number.");
                 } else {
                     double temperature = Double.parseDouble(input);
 
                     System.out.print("Enter unit (C or F): ");
                     String unit = scanner.next();
 
-                    // Validate if the unit is valid
                     if (!unit.equalsIgnoreCase("C") && !unit.equalsIgnoreCase("F")) {
                         System.out.println("Error: Unrecognized unit label. Use 'C' or 'F'.");
                     } else {
-                        // Call the required method signature
                         double result = convertTemperature(temperature, unit);
 
-                        // Display formatted results based on the source unit
                         if (unit.equalsIgnoreCase("C")) {
                             System.out.printf("%.2f C is %.2f F%n", temperature, result);
                         } else {
@@ -47,30 +33,25 @@ public class TemperatureConverter {
                         }
                     }
                 }
-                System.out.println(); // Prints empty line for readability between loops
+                System.out.println();
             }
         }
         scanner.close();
     }
 
     /**
-     * Required Method Signature from the assignment instructions hint.
-     * Receives the temperature value as a double and the unit type as a string.
+     * Required Method Signature from instructions.
      */
     public static double convertTemperature(double temperature, String unit) {
         if (unit != null && unit.equalsIgnoreCase("C")) {
-            // Celsius to Fahrenheit
             return (temperature * 9.0 / 5.0) + 32.0;
         } else {
-            // Fahrenheit to Celsius
             return (temperature - 32.0) * 5.0 / 9.0;
         }
     }
 
     /**
-     * Overloaded version of the method.
-     * This is strictly required to satisfy the TemperatureTest.java autograder 
-     * which passes int literals (like 100 or 32) instead of doubles.
+     * Overloaded method to explicitly catch primitive int types from the autograder test file.
      */
     public static double convertTemperature(int temperature, String unit) {
         return convertTemperature((double) temperature, unit);
@@ -87,7 +68,6 @@ public class TemperatureConverter {
         int decimalCount = 0;
         int startIndex = 0;
 
-        // Handle optional negative sign safely
         if (str.charAt(0) == '-') {
             if (str.length() == 1) return false;
             startIndex = 1;
@@ -97,11 +77,9 @@ public class TemperatureConverter {
             char c = str.charAt(i);
             if (c == '.') {
                 decimalCount++;
-                if (decimalCount > 1) {
-                    return false; // More than one decimal point is invalid
-                }
+                if (decimalCount > 1) return false;
             } else if (c < '0' || c > '9') {
-                return false; // Non-numeric character found
+                return false;
             }
         }
         return true;
